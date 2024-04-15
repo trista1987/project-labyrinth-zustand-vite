@@ -1,8 +1,10 @@
+import { DirectionPage } from "./components/DirectionPage";
 
 export const App = () => {
   return (
-  <div>
+  <>
+  <DirectionPage />
     Labyrinth Project 
-  </div>
+  </>
   );
 };
