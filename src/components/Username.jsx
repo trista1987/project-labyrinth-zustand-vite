@@ -1,50 +1,11 @@
-
-// import { useState } from "react"
-// import { useEffect } from "react";
-
-// export const Username = () => {
-//   const { userName, setUserName, loading, error,fetchData } = useStore();
-
-//   useEffect( () => {
-//     fetchData ()
-//   }, [fetchData]
-//   )
-
-//   if(loading) {
-//     return <div>Loading...</div>
-//   }
-
-//   if(error) {
-//     return <div> Error : {error}</div>
-//   }
-
-//   const handleSubmit = e => {
-//     e.preventDefault();
-//     fetchData()
-//  console.log("Username:", userName)
-//   }
-   
-//   const handleChange = (event) => setUserName(event.target.value);
-
-//   return (
-//     <>
-//       <p>Type in your username</p>
-//       <form onSubmit={handleSubmit}>
-//         <input type="text" value={userName} onChange={handleChange} />
-//         <button type="submit">Enter</button>
-//       </form>
-//     </>
-//   );
-// }
-// import { useStore } from "../store/useStore";
-
-import {useStore} from "../store/useStore"; // Import the Zustand store
+import {useStore} from "../store/useStore"; 
 import { useState } from "react";
 
 export const Username = () => {
-  const [usernameInput, setUsernameInput] = useState('')
-  const { setUsername, fetchData, loading, error} = useStore();
-
+  const [usernameInput, setUsernameInput] = useState('')  //this is local value, not the global one. the hook is for updating username
+  const { setUsername, fetchData, loading, error} = useStore(); //import variable from globle state
+  
+  //fetch data by using the fetch funcion from global state
   const handleSubmit = async () => {
     setUsername(usernameInput)
     await fetchData (usernameInput)
@@ -73,28 +34,4 @@ export const Username = () => {
     </form>
     </>
     
-  )
-
-
-
-  // useEffect(() => {
-  //   setUsername("YourUniqueUsername"); // Set your desired username
-  // }, [setUsername]); // Call setUsername only once when the component mounts
-
-//   return (
-//     <div>
-//       <p>{description}</p>
-//       <ul>
-//         {actions.map((action, index) => (
-//           <li key={index}>
-//             <button>{action.description}</button>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// 
-};
-
-
-
+  )}
