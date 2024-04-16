@@ -6,8 +6,12 @@ export const useStore = create (set => ({
   loading: false,
   error: null,
   gameInfo : null,
-  //fetch data, post username and get data by posting username
-  fetchData: async (username) => {
+  actionData: null,
+  direction: null,
+
+
+  //fetch data for starting, post username and get data by posting username
+  fetchStartData: async (username) => {
     set({loading:true})
     try{
       const res = await fetch('https://labyrinth.technigo.io/start', {
@@ -22,7 +26,7 @@ export const useStore = create (set => ({
       }
       //get data from API, after user enter username, we get this data from API
       const data = await res.json();
-      console.log(data)
+      console.log(data.actions[0].description)
       set({username, gameInfo: data}) // set is to update data we store in different components, so we don't need to fetch all the time. 
     } catch (error) {
       console.error('Error:', error)
@@ -32,8 +36,35 @@ export const useStore = create (set => ({
     }
 },
 
+//fetch data for action
+fetchActionData: async(username, type, direction) => {
+  set({loading: true})
+  try{
+    const res = await fetch('https://labyrinth.technigo.io/action', {
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({username,type,direction})
+    });
+    if(!res.ok) {
+      throw new Error ("Fetching data is not working")
+    }
+    const newData = await res.json();
+    console.log(newData)
+    set({username, actionData: newData})
+  } catch(error) {
+    console.error('Error:', error)
+    set({error: error})
+  } finally{
+    set({loading: false})
+  }
+},
+
+
   //for updating 
   setUsername: (username) => set({username}),
   setGameInfo : (data) => set({gameData:data}),
+  setActionData: (newData) => set({actionData:newData})
 }
 ))

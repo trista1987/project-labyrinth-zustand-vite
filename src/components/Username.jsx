@@ -3,12 +3,12 @@ import { useState } from "react";
 
 export const Username = () => {
   const [usernameInput, setUsernameInput] = useState('')  //this is local value, not the global one. the hook is for updating username
-  const { setUsername, fetchData, loading, error} = useStore(); //import variable from globle state
+  const { setUsername, fetchStartData, loading, error} = useStore(); //import variable from globle state
   
   //fetch data by using the fetch funcion from global state
   const handleSubmit = async () => {
     setUsername(usernameInput)
-    await fetchData (usernameInput)
+    await fetchStartData (usernameInput)
   }
 
   if (loading) {
