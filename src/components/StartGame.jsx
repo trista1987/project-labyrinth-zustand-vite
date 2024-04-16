@@ -19,3 +19,4 @@ export const StartGame = () => {
 }
 
 //if press show direction, will jump to another page which will show the ditail of actions
+//show Direction and Show Location can make a toggle function? 
