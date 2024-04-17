@@ -1,13 +1,14 @@
 import { create } from "zustand";
 
-export const useStore = create (set => ({
+export const useStore = create ((set, get) => ({
   //initial setting
   username: null,
   loading: false,
   error: null,
-  gameInfo : null,
+  gameInfo : { },
   actionData: null,
   direction: null,
+  isClicked: false,
 
 
   //fetch data for starting, post username and get data by posting username
@@ -36,8 +37,9 @@ export const useStore = create (set => ({
     }
 },
 
-//fetch data for action
-fetchActionData: async(username, type, direction) => {
+// fetch data for action
+fetchActionData: async(type, direction) => {
+  const {username} = get()
   set({loading: true})
   try{
     const res = await fetch('https://labyrinth.technigo.io/action', {
@@ -45,14 +47,14 @@ fetchActionData: async(username, type, direction) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({username,type,direction})
+      body: JSON.stringify({username, type, direction})
     });
     if(!res.ok) {
       throw new Error ("Fetching data is not working")
     }
     const newData = await res.json();
     console.log(newData)
-    set({username, actionData: newData})
+    set({actionData: newData})
   } catch(error) {
     console.error('Error:', error)
     set({error: error})
@@ -64,7 +66,9 @@ fetchActionData: async(username, type, direction) => {
 
   //for updating 
   setUsername: (username) => set({username}),
-  setGameInfo : (data) => set({gameData:data}),
-  setActionData: (newData) => set({actionData:newData})
+  setGameInfo : (data) => set({gameInfo:data}),
+  setActionData: (newData) => set({actionData:newData}),
+  setToggleClick: () => set((state) => ({isClicked: !state.isClicked}))
+
 }
 ))

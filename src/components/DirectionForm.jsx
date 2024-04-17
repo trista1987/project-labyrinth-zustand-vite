@@ -1,4 +1,3 @@
-// import { useRef, useEffect, useState} from "react"
 // import { useStore } from "../../store/useStore"
 
 
@@ -14,4 +13,10 @@
 //   )
 // }
 
-//data is correct, but haven't show on the page by click the button in startGame component
+export const DirectionForm = ({description}) => {
+    return (
+        <div>
+            <p>{description}</p>
+        </div>
+    )
+}
