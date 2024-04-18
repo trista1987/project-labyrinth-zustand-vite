@@ -8,59 +8,71 @@ import { Button } from "./Button"
 import { useState } from "react";
 
 export const StartGame = () => {
-    // const {gameInfo, isChecked, setToggleClick, setGameInfo} = useStore()
-    const {gameInfo, isClicked, setToggleClick, setActionData, fetchActionData} = useStore()
-    // const [showDetails, setShowDetails] = useState(false)
-    const [actionInput, setActionInput] = useState('')
-   
+  // const {gameInfo, isChecked, setToggleClick, setGameInfo} = useStore()
+  const {
+    gameInfo,
+    isClicked,
+    setToggleClick,
+    setActionData,
+    fetchActionData,
+    loading,
+  } = useStore();
+  // const [showDetails, setShowDetails] = useState(false)
+  const [actionInput, setActionInput] = useState("");
 
-    const handleClick = async () => {
-        setActionData(actionInput)
-        await fetchActionData(actionInput)
-    }
-const toggleDetails = () => {
-        setToggleClick()
-        
-    }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-    return(
+  const handleClick = async () => {
+    setActionData(actionInput);
+    await fetchActionData(actionInput);
+  };
+  const toggleDetails = (isClicked) => {
+    setToggleClick(isClicked);
+  };
+
+  return (
+    <div>
+      {/* <Link to="/location" >Show Direction</Link> */}
+
+      {/* <Button buttonName={'Show Direction'} clickFunction={setToggleClick} /> */}
+
+      {/* <DirectionForm description={gameInfo.description} /> */}
+
+      {!isClicked ? (
+        <>
+          {/* <button onClick={toggleDetails}>Show Direction</button> */}
+          <Button clickFunction={toggleDetails} buttonName={"Show Direction"} />
+          <p>{gameInfo.description}</p>
+        </>
+      ) : (
         <div>
-            {/* <Link to="/location" >Show Direction</Link> */}
-            
-            {/* <Button buttonName={'Show Direction'} clickFunction={setToggleClick} /> */}
-            
-            {/* <DirectionForm description={gameInfo.description} /> */}
-            {!isClicked ? (
-                <>
-                {/* <button onClick={toggleDetails}>Show Direction</button> */}
-                <Button clickFunction={toggleDetails} buttonName={'Show Direction'} />
-            <p>{gameInfo.description}</p>
-                </>
-            
-            ):(
-                <div>
-                {/* <button>Show Location</button>  */}
-                <Button buttonName={'Show Loaction'} />
-                
-                <ul>
-                    {gameInfo.actions?.map((action, index )=> (
-                    <div key={index}>
-                        <li >
-                        {/* <button>{action.direction}</button> */}
-                        <Button buttonName={action.direction} clickFunction={handleClick} onChange={e=>{setActionInput(e.target.value)}}/>
-                    </li>
-                    <li>{action.description}</li>
-                    </div>
-                    
-                    )
-                )}
-                </ul>
-                {/* <button>Go {gameInfo.actions[0].direction}</button> */}
-            </div>
-            ) }
-        </div>
+          {/* <button>Show Location</button>  */}
+          <Button buttonName={"Show Loaction"} />
 
-    )
+          <ul>
+            {gameInfo.actions?.map((action, index) => (
+              <div key={index}>
+                <li>
+                  {/* <button>{action.direction}</button> */}
+                  <Button
+                    buttonName={action.direction}
+                    clickFunction={handleClick}
+                    onChange={(e) => {
+                      setActionInput(e.target.value);
+                    }}
+                  />
+                </li>
+                <li>{action.description}</li>
+              </div>
+            ))}
+          </ul>
+          {/* <button>Go {gameInfo.actions[0].direction}</button> */}
+        </div>
+      )}
+    </div>
+  );
 }
 
 

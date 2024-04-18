@@ -39,7 +39,7 @@ export const useStore = create ((set, get) => ({
 
 // fetch data for action
 fetchActionData: async(type, direction) => {
-  const {username} = get()
+  const username = get().username
   set({loading: true})
   try{
     const res = await fetch('https://labyrinth.technigo.io/action', {
@@ -54,7 +54,7 @@ fetchActionData: async(type, direction) => {
     }
     const newData = await res.json();
     console.log(newData)
-    set({actionData: newData})
+    set({username, actionData: newData})
   } catch(error) {
     console.error('Error:', error)
     set({error: error})
@@ -67,8 +67,9 @@ fetchActionData: async(type, direction) => {
   //for updating 
   setUsername: (username) => set({username}),
   setGameInfo : (data) => set({gameInfo:data}),
-  setActionData: (newData) => set({actionData:newData}),
-  setToggleClick: () => set((state) => ({isClicked: !state.isClicked}))
+  // setActionData: (newData) => set({actionData:newData}),
+  setToggleClick: () => set((state) => ({isClicked: !state.isClicked})),
+  setActionData: (type, direction) => set({actiondata: type, direction})
 
 }
 ))
