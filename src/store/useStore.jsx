@@ -7,7 +7,6 @@ export const useStore = create ((set, get) => ({
   error: null,
   gameInfo : { },
   actionData: null,
-  direction: null,
   isClicked: false,
 
 
@@ -38,7 +37,7 @@ export const useStore = create ((set, get) => ({
 },
 
 // fetch data for action
-fetchActionData: async(type, direction) => {
+fetchActionData: async() => {
   const username = get().username
   set({loading: true})
   try{
@@ -47,13 +46,13 @@ fetchActionData: async(type, direction) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({username, type, direction})
+      body: JSON.stringify({username, type: 'move', direction: 'East'})
     });
     if(!res.ok) {
       throw new Error ("Fetching data is not working")
     }
     const newData = await res.json();
-    console.log(newData)
+    console.log(newData.description)
     set({username, actionData: newData})
   } catch(error) {
     console.error('Error:', error)
@@ -70,6 +69,5 @@ fetchActionData: async(type, direction) => {
   // setActionData: (newData) => set({actionData:newData}),
   setToggleClick: () => set((state) => ({isClicked: !state.isClicked})),
   setActionData: (type, direction) => set({actiondata: type, direction})
-
 }
 ))
