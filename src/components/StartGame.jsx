@@ -45,7 +45,7 @@ export const StartGame = () => {
           {showDirections && (
             <div>
               <p>Available Directions:</p>
-              {actionData?.actions?.map((action, index) => (
+              {gameInfo?.actions?.map((action, index) => (
                 <div key={index}>
                   <button onClick={() => handleClick(action.direction)}>
                     Go {action.direction}
