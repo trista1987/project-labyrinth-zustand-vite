@@ -65,6 +65,9 @@ export const useStore = create((set, get) => ({
 
   setUsername: (username) => set({ username }),
   setGameInfo: (data) => set({ gameInfo: data }),
-  setToggleClick: () => set((state) => ({ isClicked: !state.isClicked })),
+  setToggleClick: () => {
+    console.log("clicked ") //just testing
+    set((state) => ({ isClicked: !state.isClicked }))
+  },
   setActionData: (actionDirection) => set({ actionData: actionDirection }), // Set actionData with the direction
 }))

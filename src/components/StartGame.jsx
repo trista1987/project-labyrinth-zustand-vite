@@ -1,27 +1,12 @@
 import { useStore } from "../store/useStore"
-import { useState } from "react"
 
 export const StartGame = () => {
-  const {
-    gameInfo,
-    isClicked,
-    setToggleClick,
-    setActionData,
-    fetchActionData,
-    loading,
-    actionData,
-  } = useStore()
-
-  const [showDirections, setShowDirections] = useState(false)
+  const { gameInfo, setActionData, fetchActionData, loading, actionData } =
+    useStore()
 
   const handleClick = async (actionDirection) => {
     await setActionData(actionDirection)
     await fetchActionData()
-  }
-
-  const toggleDetails = () => {
-    setToggleClick()
-    setShowDirections(!showDirections) // Toggle showDirections state
   }
 
   if (loading) {
@@ -30,42 +15,30 @@ export const StartGame = () => {
 
   return (
     <div className='start-game-container'>
-      {!isClicked ? (
-        <>
-          <button onClick={toggleDetails}>
-            {isClicked ? "Show Location" : "Show Direction"}
-          </button>
-          <p>{gameInfo?.description}</p>
-        </>
-      ) : (
-        <div>
-          <button onClick={toggleDetails}>
-            {isClicked ? "Show Location" : "Show Direction"}
-          </button>
-          {showDirections && (
-            <div>
-              <p>Available Directions:</p>
-              {gameInfo?.actions?.map((action, index) => (
-                <div key={index}>
-                  <button onClick={() => handleClick(action.direction)}>
-                    Go {action.direction}
-                  </button>
-                  <p>{action.description}</p>
-                </div>
-              ))}
-            </div>
-          )}
-          {/* Descriptions are now displayed consistently here */}
-          {actionData?.actions?.map((action, index) => (
+      <p>{actionData ? actionData.description : gameInfo?.description}</p>
+      {/* If there is actionData, show the description */}
+      <div className='direction-container'>
+        <p>Available Directions:</p>
+        {/* If there is no actionData, show gameinfo */}
+        {!actionData &&
+          gameInfo?.actions?.map((action, index) => (
             <div key={index}>
+              <p>{action.description}</p>
               <button onClick={() => handleClick(action.direction)}>
                 Go {action.direction}
               </button>
-              <p>{action.description}</p>
             </div>
           ))}
+      </div>
+      {/* Descriptions are now displayed consistently here */}
+      {actionData?.actions?.map((action, index) => (
+        <div key={index}>
+          <p>{action.description}</p>
+          <button onClick={() => handleClick(action.direction)}>
+            Go {action.direction}
+          </button>
         </div>
-      )}
+      ))}
     </div>
   )
 }
