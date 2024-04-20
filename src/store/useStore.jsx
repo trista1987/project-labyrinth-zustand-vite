@@ -50,12 +50,10 @@ export const useStore = create((set, get) => ({
           direction: direction, // Pass the selected direction
         }),
       })
-      console.log("Response:", res) //Log entire response object
       if (!res.ok) {
         throw new Error("Fetching data is not working")
       }
       const newData = await res.json()
-      console.log("newData:", newData) //Log the fetched data
       set({ username, actionData: newData })
     } catch (error) {
       console.error("Error:", error)
