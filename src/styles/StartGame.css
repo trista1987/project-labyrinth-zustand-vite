@@ -5,3 +5,13 @@
   background-size: cover;
   background-position: center;
 }
+
+.start-game-container > p {
+  font-size: 1.2rem;
+}
+
+.direction-container {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: center;
+}

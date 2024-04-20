@@ -1,4 +1,5 @@
 import { useStore } from "../store/useStore"
+import "../styles/StartGame.css"
 
 export const StartGame = () => {
   const { gameInfo, setActionData, fetchActionData, loading, actionData } =
