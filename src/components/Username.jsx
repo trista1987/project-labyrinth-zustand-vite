@@ -2,7 +2,6 @@ import Lottie from "lottie-react"
 import { useStore } from "../store/useStore"
 import { useState } from "react"
 import "../styles/Username.css"
-import startImg from "/maze-entrance.jpg"
 import Loading from "../assets/loading.json"
 
 export const Username = () => {
@@ -29,14 +28,7 @@ export const Username = () => {
   }
 
   return (
-    <div
-      className='start-background'
-      style={{
-        backgroundImage: `url(${startImg})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        background: "linear-gradient(rgb(0,0,0,0) 20%, rgb(0,0,0) 100%",
-      }}>
+    <div className='start-background'>
       <div className='main-container'>
         <h1>THE MAZE</h1>
         <p>Enter the labyrinth on your own risk.</p>

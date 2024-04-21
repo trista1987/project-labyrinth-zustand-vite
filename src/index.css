@@ -25,10 +25,11 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(rgb(0, 0, 0, 0) 20%, rgb(0, 0, 0) 100%);
   background-image: url(/maze-entrance.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
 }
 
 h1 {
@@ -38,7 +39,7 @@ h1 {
 }
 
 p {
-  margin: 24px 0 8px 0;
+  margin: 20px 0 8px 0;
 }
 
 button {
