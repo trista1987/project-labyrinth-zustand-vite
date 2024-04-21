@@ -19,6 +19,6 @@ Here our maze game.
 
 ## Instructions
 
-<a href="instructions.md">
-   See instructions of this project
+<a href="https://fun-maze.netlify.app/">
+   Labyrinth Maze
   </a>
