@@ -12,6 +12,10 @@
   padding: 8rem 0 10rem;
 }
 
+.main-container > p {
+  margin: 1rem 1rem 0.5rem;
+}
+
 form {
   display: flex;
   flex-direction: column;

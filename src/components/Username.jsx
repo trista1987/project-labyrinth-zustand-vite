@@ -31,8 +31,8 @@ export const Username = () => {
     <div className='start-background'>
       <div className='main-container'>
         <h1>THE MAZE</h1>
-        <p>Enter the labyrinth on your own risk.</p>
         <p>Can you find a way out of the maze?</p>
+        <p>Enter the labyrinth at your own risk.</p>
         <br />
       </div>
       <form onSubmit={handleSubmit}>
