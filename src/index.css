@@ -1,6 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
 
   color: rgba(36, 36, 36, 0.87);
@@ -15,6 +14,7 @@ body {
   text-align: center;
   min-width: 320px;
   min-height: 100vh;
+  background: linear-gradient(rgb(0, 0, 0, 0) 20%, rgb(0, 0, 0) 100%);
 }
 
 h1 {
@@ -25,7 +25,6 @@ h1 {
 
 p {
   margin: 24px 0 8px 0;
-  font-family: "Montserrat", sans-serif;
 }
 
 button {
@@ -38,6 +37,7 @@ button {
   background-color: #e1e1e1;
   cursor: pointer;
   transition: border-color 0.25s;
+  font-family: "Maze Runner", sans-serif;
 }
 button:hover {
   border-color: #646cff;

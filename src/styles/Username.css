@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12rem 3rem 20rem;
+  padding: 12rem 2rem 20rem;
   text-align: center;
+  width: auto;
+  height: 100%;
 }
 
 form {
@@ -15,5 +17,12 @@ form {
 input {
   margin: 0.4rem 0 1.5rem;
   height: 1.5rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Maze Runner", sans-serif;
+}
+
+@media all and (min-width: 668px) {
+  .start-background {
+    padding: 0;
+    margin: 10rem;
+  }
 }

@@ -1,7 +1,7 @@
 import { useStore } from "../store/useStore"
 import { useState } from "react"
 import "../styles/Username.css"
-import startImg from "/start.jpg"
+import startImg from "/maze-entrance.jpg"
 
 export const Username = () => {
   const [usernameInput, setUsernameInput] = useState("") //this is local value, not the global one. the hook is for updating username
@@ -20,12 +20,12 @@ export const Username = () => {
   if (error) {
     return <div>Error: {error}</div>
   }
-
+  console.log("background image:", startImg)
   return (
     <div
       className='start-background'
       style={{
-        background: `linear-gradient(rgb(0,0,0,0) 20%, rgb(0,0,0) 100%, url(${startImg})`,
+        backgroundImage: `url(${startImg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}>
