@@ -60,3 +60,10 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+@media all and (min-width: 668px) {
+  p {
+    font-size: 1.2rem;
+    margin: 2rem 3rem 0.5rem;
+  }
+}

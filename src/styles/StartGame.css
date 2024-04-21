@@ -1,8 +1,5 @@
 .start-game-container {
   height: 100vh;
-  /* background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center; */
   background: linear-gradient(rgb(0, 0, 0, 0) 10%, rgb(0, 0, 0) 100%);
 }
 
@@ -24,5 +21,9 @@
     flex-direction: column;
     align-items: center;
     width: 100vw;
+  }
+  .start-game-container > p {
+    font-size: 1.5rem;
+    padding: 9rem 3rem;
   }
 }
