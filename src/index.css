@@ -2,7 +2,7 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
 
-  color: rgba(36, 36, 36, 0.87);
+  color: #e1e1e1;
 }
 
 @font-face {
@@ -25,9 +25,10 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-width: 320px;
-  min-height: 100vh;
   background: linear-gradient(rgb(0, 0, 0, 0) 20%, rgb(0, 0, 0) 100%);
+  background-image: url(/maze-entrance.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 h1 {
@@ -46,7 +47,6 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
   background-color: #e1e1e1;
   cursor: pointer;
   transition: border-color 0.25s;

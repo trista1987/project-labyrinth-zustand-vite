@@ -26,7 +26,6 @@ export const StartGame = () => {
       <p>{actionData ? actionData.description : gameInfo?.description}</p>
       {/* If there is actionData, show the description */}
       <div className='direction-container'>
-        <p>Available Directions:</p>
         {/* If there is no actionData, show gameinfo */}
         {!actionData &&
           gameInfo?.actions?.map((action, index) => (

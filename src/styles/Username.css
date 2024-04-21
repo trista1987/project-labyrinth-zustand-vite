@@ -22,7 +22,7 @@ input {
 
 @media all and (min-width: 668px) {
   .start-background {
-    width: 100%;
-    height: auto;
+    margin: 0;
+    padding: 10rem 10rem;
   }
 }

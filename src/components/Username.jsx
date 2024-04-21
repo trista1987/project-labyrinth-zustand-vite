@@ -35,6 +35,7 @@ export const Username = () => {
         backgroundImage: `url(${startImg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
+        background: "linear-gradient(rgb(0,0,0,0) 20%, rgb(0,0,0) 100%",
       }}>
       <div className='main-container'>
         <h1>THE MAZE</h1>
