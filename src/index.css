@@ -39,12 +39,12 @@ h1 {
 }
 
 p {
-  margin: 20px 0 8px 0;
+  margin: 2rem 1rem 0.5rem;
 }
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid #515050;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;

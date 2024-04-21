@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="">
-    <img src="./src/assets/banner.svg" alt="Project Banner Image">
+    <img src="/cover-image-github.png" alt="Project preview image">
   </a>
 </h1>
 
