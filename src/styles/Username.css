@@ -1,0 +1,19 @@
+.start-background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12rem 3rem 20rem;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+}
+
+input {
+  margin: 0.4rem 0 1.5rem;
+  height: 1.5rem;
+  font-family: "Montserrat", sans-serif;
+}

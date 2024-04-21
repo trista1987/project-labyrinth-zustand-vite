@@ -1,5 +1,7 @@
 import { useStore } from "../store/useStore"
 import { useState } from "react"
+import "../styles/Username.css"
+import startImg from "/start.jpg"
 
 export const Username = () => {
   const [usernameInput, setUsernameInput] = useState("") //this is local value, not the global one. the hook is for updating username
@@ -20,12 +22,18 @@ export const Username = () => {
   }
 
   return (
-    <>
-      <div>
+    <div
+      className='start-background'
+      style={{
+        background: `linear-gradient(rgb(0,0,0,0) 20%, rgb(0,0,0) 100%, url(${startImg})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}>
+      <div className='main-container'>
         <h1>THE MAZE</h1>
         <p>Enter the labyrinth on your own risk.</p>
-        <br />
         <p>Can you find a way out of the maze?</p>
+        <br />
       </div>
       <form onSubmit={handleSubmit}>
         <label> Enter your username: </label>
@@ -36,6 +44,6 @@ export const Username = () => {
         />
         <button type='submit'>Submit</button>
       </form>
-    </>
+    </div>
   )
 }

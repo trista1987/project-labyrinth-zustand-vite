@@ -12,6 +12,19 @@
 
 .direction-container {
   display: flex;
+  flex-direction: column;
   margin-top: 2rem;
   justify-content: center;
+}
+
+@media all and (min-width: 668px) {
+  .start-game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .direction-container {
+    width: 600px;
+  }
 }
