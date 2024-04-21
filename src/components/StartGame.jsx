@@ -1,5 +1,7 @@
+import Lottie from "lottie-react"
 import { useStore } from "../store/useStore"
 import "../styles/StartGame.css"
+import Loading from "../assets/loading.json"
 
 export const StartGame = () => {
   const { gameInfo, setActionData, fetchActionData, loading, actionData } =
@@ -11,7 +13,12 @@ export const StartGame = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>
+    return (
+      <Lottie
+        animationData={Loading}
+        loop={true}
+      />
+    )
   }
 
   return (

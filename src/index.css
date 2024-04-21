@@ -5,9 +5,22 @@
   color: rgba(36, 36, 36, 0.87);
 }
 
-body {
+@font-face {
+  font-family: Maze Runner;
+  src: url(./assets/MAZE_RUNNER.ttf);
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url(./assets/Montserrat-VariableFont_wght.ttf);
+}
+
+* {
   margin: 0;
   padding: 0;
+}
+
+body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,14 +58,4 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@font-face {
-  font-family: Maze Runner;
-  src: url(./assets/MAZE_RUNNER.ttf);
-}
-
-@font-face {
-  font-family: Montserrat;
-  src: url(./assets/Montserrat-VariableFont_wght.ttf);
 }

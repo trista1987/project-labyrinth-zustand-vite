@@ -1,7 +1,9 @@
+import Lottie from "lottie-react"
 import { useStore } from "../store/useStore"
 import { useState } from "react"
 import "../styles/Username.css"
 import startImg from "/maze-entrance.jpg"
+import Loading from "../assets/loading.json"
 
 export const Username = () => {
   const [usernameInput, setUsernameInput] = useState("") //this is local value, not the global one. the hook is for updating username
@@ -14,13 +16,18 @@ export const Username = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>
+    return (
+      <Lottie
+        animationData={Loading}
+        loop={true}
+      />
+    )
   }
 
   if (error) {
     return <div>Error: {error}</div>
   }
-  console.log("background image:", startImg)
+
   return (
     <div
       className='start-background'
