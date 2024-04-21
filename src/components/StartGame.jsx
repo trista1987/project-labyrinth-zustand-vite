@@ -1,22 +1,51 @@
+import Lottie from "lottie-react"
 import { useStore } from "../store/useStore"
-// import { Link } from "react-router-dom";
-
+import "../styles/StartGame.css"
+import Loading from "../assets/loading.json"
 
 export const StartGame = () => {
-    const {gameInfo, loading, error} = useStore()
+  const { gameInfo, setActionData, fetchActionData, loading, actionData } =
+    useStore()
 
-    if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error.message}</p>;
+  const handleClick = async (actionDirection) => {
+    await setActionData(actionDirection)
+    await fetchActionData()
+  }
 
-    return(
-        <div>
-            {/* <Link to="/location" >Show Direction</Link> */}
-            <button>Show Direction</button>
-            <p>{gameInfo.description}</p>
-        </div>
-
+  if (loading) {
+    return (
+      <Lottie
+        animationData={Loading}
+        loop={true}
+      />
     )
-}
+  }
 
-//if press show direction, will jump to another page which will show the ditail of actions
-//show Direction and Show Location can make a toggle function? 
+  return (
+    <div className='start-game-container'>
+      <p>{actionData ? actionData.description : gameInfo?.description}</p>
+      {/* If there is actionData, show the description */}
+      <div className='direction-container'>
+        {/* If there is no actionData, show gameinfo */}
+        {!actionData &&
+          gameInfo?.actions?.map((action, index) => (
+            <div key={index}>
+              <p>{action.description}</p>
+              <button onClick={() => handleClick(action.direction)}>
+                Go {action.direction}
+              </button>
+            </div>
+          ))}
+      </div>
+      {/* Descriptions are now displayed consistently here */}
+      {actionData?.actions?.map((action, index) => (
+        <div key={index}>
+          <p>{action.description}</p>
+          <button onClick={() => handleClick(action.direction)}>
+            Go {action.direction}
+          </button>
+        </div>
+      ))}
+    </div>
+  )
+}
