@@ -5,9 +5,8 @@ export const useStore = create((set, get) => ({
   username: null,
   loading: false,
   error: null,
-  gameInfo: {},
   actionData: null,
-  isClicked: false,
+
 
   //fetch data for starting, post username and get data by posting username
   fetchStartData: async (username) => {
@@ -24,7 +23,7 @@ export const useStore = create((set, get) => ({
         throw new Error("Fetching data is not working")
       }
       const data = await res.json()
-      set({ username, gameInfo: data })
+      set({ username, actionData:data })
     } catch (error) {
       console.error("Error:", error)
       set({ error: error })
@@ -34,9 +33,8 @@ export const useStore = create((set, get) => ({
   },
 
   // fetch data for action
-  fetchActionData: async () => {
+  fetchActionData: async (direction) => {
     const username = get().username
-    const direction = get().actionData // Get the selected direction
     set({ loading: true })
     try {
       const res = await fetch("https://labyrinth.technigo.io/action", {
@@ -54,7 +52,7 @@ export const useStore = create((set, get) => ({
         throw new Error("Fetching data is not working")
       }
       const newData = await res.json()
-      set({ username, actionData: newData })
+      set({ actionData: newData })
     } catch (error) {
       console.error("Error:", error)
       set({ error: error })
@@ -63,8 +61,7 @@ export const useStore = create((set, get) => ({
     }
   },
 
-  setUsername: (username) => set({ username }),
-  setGameInfo: (data) => set({ gameInfo: data }),
-  setToggleClick: () => set((state) => ({ isClicked: !state.isClicked })),
-  setActionData: (actionDirection) => set({ actionData: actionDirection }), // Set actionData with the direction
+
+  startGame: async(username) => {
+    await get().fetchStartData(username)}
 }))
